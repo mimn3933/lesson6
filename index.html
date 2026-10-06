@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- ↑ 「これはHTMLファイルです」とブラウザに伝える宣言 -->
+
+<html lang="ja">
+<!-- ↑ HTMLの始まり。lang="ja" は日本語のページであることを示す -->
+
+<head>
+  <!-- head の中は「設定情報」。ブラウザには表示されない -->
+  <meta charset="UTF-8">
+  <!-- ↑ 文字コードの指定。日本語を正しく表示するために必要 -->
+
+  <title>自己紹介</title>
+  <!-- ↑ ブラウザのタブに表示されるタイトル -->
+
+  <!-- Google Fonts「Noto Sans JP」を読み込む -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSSはここに書く。「どの要素を」「どう見せるか」を指定する */
+
+    body {
+      /* body = ページ全体に適用するスタイル */
+      margin: 0;
+      min-height: 100vh;
+      /* 背景をグラデーション（濃い青→水色）にする */
+      background: linear-gradient(135deg, #0b3d91, #7fd8f7);
+      font-family: "Noto Sans JP", sans-serif; /* フォントの種類 */
+
+      /* カードを画面中央に配置する */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      /* 自己紹介カード：白い角丸のカード */
+      background-color: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 480px;
+      width: 100%;
+      /* 影をつけてふわっと浮いて見せる */
+      box-shadow: 0 20px 45px rgba(11, 61, 145, 0.35);
+      /* ページを開いたとき下から上にふわっと現れる */
+      animation: fadeInUp 0.8s;
+    }
+
+    @keyframes fadeInUp {
+      /* 0%地点：下に少しずれて透明 */
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      /* 100%地点：元の位置で不透明 */
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      /* h1 = 大見出しに適用するスタイル */
+      color: #333;
+      font-size: 40px;   /* 名前の見出しを大きく */
+      font-weight: 900;  /* 太字にする */
+      margin-top: 0;
+    }
+
+    p {
+      /* p = 段落テキストに適用するスタイル */
+      color: #555;      /* 文字色（グレー） */
+      line-height: 1.8; /* 行間（1.8倍に広げる） */
+    }
+
+    ul {
+      color: #555;
+      line-height: 1.8;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      /* 各リスト項目をボタンのような見た目にする */
+      background-color: #eaf3ff;
+      border-radius: 12px;
+      padding: 10px 16px;
+      margin-bottom: 10px;
+      transition: background-color 0.3s; /* 色の変化を0.3秒でなめらかに */
+    }
+
+    li:hover {
+      /* マウスを乗せたときに背景色が変わる */
+      background-color: #7fd8f7;
+    }
+
+    a {
+      color: #0b3d91;
+      font-weight: 500;
+    }
+
+    h2 {
+      /* h2 = スキルセクションの見出し */
+      color: #333;
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    .skill {
+      margin-bottom: 16px;
+    }
+
+    .skill-label {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .skill-bar {
+      /* バーの背景（トラック部分） */
+      background-color: #eaf3ff;
+      border-radius: 8px;
+      height: 14px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      /* バー本体：グラデーションの色 */
+      height: 100%;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #0b3d91, #7fd8f7);
+      width: var(--target-width); /* スキルごとの幅（インライン style で指定） */
+      /* 0%から指定の幅まで伸びるアニメーション */
+      animation: growBar 1.2s ease-out;
+    }
+
+    @keyframes growBar {
+      from {
+        width: 0;
+      }
+      to {
+        width: var(--target-width);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- body の中に「表示したい内容」を書く -->
+
+  <div class="card">
+    <!-- ↑ 自己紹介カード。白背景・角丸・影で中央に浮かせる -->
+
+    <h1>峰松美空</h1>
+    <!-- ↑ 大見出し。ページで最も目立つタイトルに使う -->
+
+    <p>こんにちは！プログラミングを学習中です。</p>
+    <!-- ↑ 段落テキスト。普通の文章は p タグで囲む -->
+
+    <ul>
+      <!-- ul = 箇条書きリスト。li で各項目を囲む -->
+      <li>趣味: お菓子作り</li>
+      <li>趣味: 散歩</li>
+      <li>趣味: 旅行</li>
+    </ul>
+    <a href="https://www.google.com">Googleを開く</a>
+
+    <h2>スキル</h2>
+    <!-- ↑ スキルセクションの見出し -->
+
+    <div class="skill">
+      <div class="skill-label">HTML/CSS: 40%</div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="--target-width: 40%;"></div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-label">JavaScript: 20%</div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="--target-width: 20%;"></div>
+      </div>
+    </div>
+
+    <div class="skill">
+      <div class="skill-label">AI活用: 80%</div>
+      <div class="skill-bar">
+        <div class="skill-fill" style="--target-width: 80%;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- ↑ HTMLの終わり -->
+</html>
